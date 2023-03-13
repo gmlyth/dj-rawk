@@ -3,6 +3,6 @@ Description: This will define S3 bucket(s) and DynamoDB tables necessary for the
 Resources:
   MusicBucket:
     Type: AWS::S3::Bucket
-    DeltionPolicy: Retain
+    DeletionPolicy: Retain
     Properties:
       BucketName: dj-rawk-music
