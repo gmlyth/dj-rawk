@@ -6,3 +6,56 @@ Resources:
     DeletionPolicy: Retain
     Properties:
       BucketName: dj-rawk-music
+      Tags:
+        - Key: Vendor
+          Value: DjRawk
+        - Key: Name
+          Value: DjRawkMusic 
+
+  AlbumsTable:
+    Type: AWS::DynamoDB::Table
+    Properties: 
+      BillingMode: PROVISIONED
+      ProvisionedThroughput:
+        ReadCapacityUnits: 1
+        WriteCapacityUnits: 1
+      TableName: DjRawkAlbums 
+      AttributeDefinitions: 
+        - AttributeName: album_name
+          AttributeType: S
+        - AttributeName: artist_name
+          AttributeType: S          
+      KeySchema: 
+        - AttributeName: album_name
+          KeyType: HASH   
+        - AttributeName: artist_name
+          KeyType: RANGE         
+      Tags:
+          - Key: Vendor
+            Value: DjRawk
+          - Key: Name
+            Value: DjRawkAlbums
+
+  SongsTable:
+    Type: AWS::DynamoDB::Table
+    Properties: 
+      BillingMode: PROVISIONED
+      ProvisionedThroughput:
+        ReadCapacityUnits: 1
+        WriteCapacityUnits: 1
+      TableName: DjRawkSongs
+      AttributeDefinitions: 
+        - AttributeName: song_name
+          AttributeType: S
+        - AttributeName: album_name
+          AttributeType: S          
+      KeySchema: 
+        - AttributeName: song_name
+          KeyType: HASH   
+        - AttributeName: album_name
+          KeyType: RANGE         
+      Tags:
+          - Key: Vendor
+            Value: DjRawk
+          - Key: Name
+            Value: DjRawkSongs          
