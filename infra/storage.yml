@@ -1,6 +1,21 @@
 Description: This will define S3 bucket(s) and DynamoDB tables necessary for the bot to function.
 
+Parameters:
+  DjRawkBotToken:
+    Type: String
+    Default: Get it from Discord if you don't have it. Don't just make it up.
+    Description: Enter the token for the DJ Rawk Discord bot.
+
 Resources:
+
+  DjRawkBotTokenParameter:
+    Type: AWS::SSM::Parameter
+    Properties: 
+      Description: DJ Rawk Bot Token
+      Name: djrawkbot-token
+      Type: String
+      Value: !Ref DjRawkBotToken
+
   MusicBucket:
     Type: AWS::S3::Bucket
     DeletionPolicy: Retain
